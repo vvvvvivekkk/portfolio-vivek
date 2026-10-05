@@ -329,9 +329,9 @@
   const opsLog = $('.ops-log');
   if (opsAgents.length && opsLog) {
     const feed = [
-      ['searching 14 sources…', 'found 12 new sources', 'queued 3 knowledge gaps'],
-      ['structuring knowledge…', 'extracted 23 entities', 'linked 41 relationships'],
-      ['auditing claims…', '3 contradictions detected', 'flagged 2 missing citations'],
+      ['scanning 14 legal sources…', 'found 12 new rulings', 'queued 3 knowledge gaps'],
+      ['structuring knowledge…', 'extracted 23 clauses', 'linked 41 relationships'],
+      ['auditing claims…', '3 conflicting rulings detected', 'flagged 2 missing citations'],
       ['investigating conflicts…', 'resolved 2 of 3 conflicts', 're-queued 1 research task']
     ];
     const names = ['Researcher', 'Curator', 'Sentinel', 'Resolver'];
