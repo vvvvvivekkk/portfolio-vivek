@@ -285,3 +285,28 @@ body.no-motion .hero-title .line .ch{transform:none!important}
 .panel-link{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:.82rem;font-weight:700;letter-spacing:.2em;border-bottom:2px solid currentColor;padding-bottom:6px}
 .panel-link b{font-weight:400;transition:transform .35s var(--ease)}
 .panel-link:hover b{transform:translate(4px,-4px)}
+
+/* ——— agent arena ——— */
+.panel-arena{background:#261c3a;color:var(--cream)}
+.panel-arena em{color:var(--butter)}
+.arena{width:min(460px,100%);background:#1d1430;border:1px solid #b9a2ff3d;border-radius:18px;padding:20px;box-shadow:16px 24px 0 #00000055;transform:rotate(-3deg);font-size:.8rem;color:#d9d2ea}
+.arena-top{display:flex;justify-content:space-between;font-size:.64rem;letter-spacing:.18em;color:#f1ead8;border-bottom:1px solid #b9a2ff2b;padding-bottom:11px}
+.arena-round{color:var(--butter)}
+.arena-topic{font-size:.62rem;letter-spacing:.14em;color:#b9a2ff;margin:12px 0 4px}
+.arena-feed{height:238px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:6px 0 12px}
+.a-bubble{max-width:88%;border-radius:14px 14px 14px 4px;padding:11px 14px;background:#b9a2ff;color:#1d1430;display:grid;gap:4px;align-self:flex-start}
+.a-bubble b{font-size:.58rem;letter-spacing:.14em;opacity:.65}
+.a-bubble span{font-size:.82rem;line-height:1.4}
+.a-bubble.b{align-self:flex-end;border-radius:14px 14px 4px 14px;background:var(--butter);color:#2a2008}
+.a-bubble.judge{align-self:center;border-radius:12px;background:#f1ead8;color:#261c3a;text-align:center}
+.arena-judge{border-top:1px solid #b9a2ff2b;padding-top:12px}
+.arena-scores{display:flex;justify-content:space-between;font-size:.6rem;letter-spacing:.16em;color:#b9a2ff;margin-bottom:9px}
+.arena-scores b{color:#f1ead8;font-size:.78rem}
+.arena-track{height:10px;border-radius:8px;background:#f6c94533;overflow:hidden}
+.arena-fill{display:block;height:100%;width:50%;background:linear-gradient(90deg,#b9a2ff,#9f86f5);border-radius:8px}
+.panel-arena .hf-float{right:-34px;bottom:-46px;rotate:6deg;border-color:#b9a2ff;box-shadow:12px 16px 0 #0e081dc0}
+@media(max-width:860px){
+  .arena{transform:rotate(-2deg)}
+  .arena-feed{height:210px}
+  .panel-arena .hf-float{right:-12px;bottom:-30px}
+}

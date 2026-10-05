@@ -350,6 +350,55 @@
     }, 1700);
   }
 
+  /* ——— Agent Arena: live debate loop ——— */
+  const arena = $('.arena');
+  if (arena) {
+    const feedEl = $('.arena-feed', arena);
+    const fill = $('.arena-fill', arena);
+    const sA = $('.score-a', arena), sB = $('.score-b', arena);
+    const roundEl = $('.arena-round', arena);
+    const debate = [
+      ['a', 'Video can’t see you’re stuck. A tutor adapts in seconds.', 57],
+      ['b', 'Adaptivity without rigor is noise — lectures are vetted.', 51],
+      ['a', 'Vetted, static, and skipped. Tutors check understanding every turn.', 59],
+      ['b', 'And when the tutor hallucinates in a classroom?', 53],
+      ['a', 'Ground every claim. Log every answer for the teacher.', 62],
+      ['judge', 'JUDGE — PRO takes it 62–38: adaptivity plus grounded claims.', 62]
+    ];
+    let step = 0, typer = 0;
+    feedEl.innerHTML = '';
+    function speak() {
+      if (step >= debate.length) {
+        step = 0;
+        gsap.to([...feedEl.children], {
+          autoAlpha: 0, y: -16, stagger: 0.07, duration: 0.45,
+          onComplete() { feedEl.innerHTML = ''; gsap.set(fill, { width: '50%' }); sA.textContent = 50; sB.textContent = 50; setTimeout(speak, 600); }
+        });
+        return;
+      }
+      const [side, text, score] = debate[step++];
+      const b = document.createElement('div');
+      b.className = 'a-bubble ' + (side === 'judge' ? 'judge' : side);
+      b.innerHTML = `<b>${side === 'a' ? 'AGENT A · PRO' : side === 'b' ? 'AGENT B · CON' : '⚖ JUDGE'}</b><span></span>`;
+      feedEl.appendChild(b);
+      while (feedEl.children.length > 3) feedEl.firstChild.remove();
+      gsap.from(b, { y: 20, autoAlpha: 0, duration: 0.4, ease: 'power3.out' });
+      const span = b.querySelector('span');
+      let i = 0;
+      typer = setInterval(() => {
+        span.textContent = text.slice(0, ++i);
+        if (i >= text.length) {
+          clearInterval(typer);
+          gsap.to(fill, { width: score + '%', duration: 0.8, ease: 'power3.out' });
+          sA.textContent = score; sB.textContent = 100 - score;
+          roundEl.textContent = 'ROUND ' + Math.min(3, Math.ceil(step / 2)) + ' / 3';
+          setTimeout(speak, 1000);
+        }
+      }, 26);
+    }
+    speak();
+  }
+
   /* ——— contact letters ——— */
   $$('.contact-huge .ch').forEach(ch => {
     ch.addEventListener('pointerenter', () => {
