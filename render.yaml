@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: portfolio-vivek
+    runtime: static
+    buildCommand: echo "Static site - no build step"
+    staticPublishPath: .
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
