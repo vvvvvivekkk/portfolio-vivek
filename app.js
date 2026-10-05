@@ -27,9 +27,10 @@
         if (n.nodeType === 3 && n.textContent.trim()) {
           const frag = document.createDocumentFragment();
           [...n.textContent].forEach(c => {
+            if (c === ' ') { frag.appendChild(document.createTextNode(' ')); return; }
             const s = document.createElement('span');
             s.className = 'ch';
-            s.innerHTML = c === ' ' ? '&nbsp;' : c;
+            s.textContent = c;
             frag.appendChild(s);
           });
           node.replaceChild(frag, n);
