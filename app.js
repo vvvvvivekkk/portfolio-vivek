@@ -226,9 +226,9 @@
         scrollTrigger: { trigger: panel, containerAnimation: scrollTween, start: 'left right', end: 'right left', scrub: true, horizontal: true }
       });
     });
-    gsap.to('.edge', {
-      strokeDashoffset: 0, duration: 1.6, stagger: 0.12, ease: 'power2.inOut',
-      scrollTrigger: { trigger: '.panel-varavox', containerAnimation: scrollTween, start: 'left 65%', horizontal: true }
+    gsap.from('.ops-console', {
+      scale: 0.85, autoAlpha: 0, rotate: 8, duration: 0.9, ease: 'back.out(1.5)',
+      scrollTrigger: { trigger: '.panel-kge', containerAnimation: scrollTween, start: 'left 65%', horizontal: true }
     });
     gsap.from('.bubble', {
       scale: 0, autoAlpha: 0, duration: 0.7, stagger: 0.16, ease: 'back.out(2.2)',
@@ -255,9 +255,9 @@
         scrollTrigger: { trigger: panel, start: 'top 72%' }
       });
     });
-    gsap.to('.edge', {
-      strokeDashoffset: 0, duration: 1.6, stagger: 0.12, ease: 'power2.inOut',
-      scrollTrigger: { trigger: '.panel-varavox', start: 'top 60%' }
+    gsap.from('.ops-console', {
+      scale: 0.85, autoAlpha: 0, rotate: 8, duration: 0.9, ease: 'back.out(1.5)',
+      scrollTrigger: { trigger: '.panel-kge', start: 'top 60%' }
     });
     gsap.from('.bubble', {
       scale: 0, autoAlpha: 0, duration: 0.7, stagger: 0.16, ease: 'back.out(2.2)',
@@ -323,6 +323,32 @@
   // hero reel follows a lazy orbit
   const reel = $('.hero-reel');
   if (reel) gsap.to(reel, { y: -16, rotate: 5, repeat: -1, yoyo: true, duration: 3.2, ease: 'sine.inOut' });
+
+  /* ——— KGE ops console: live agent loop ——— */
+  const opsAgents = $$('.ops-agent');
+  const opsLog = $('.ops-log');
+  if (opsAgents.length && opsLog) {
+    const feed = [
+      ['searching 14 sources…', 'found 12 new sources', 'queued 3 knowledge gaps'],
+      ['structuring knowledge…', 'extracted 23 entities', 'linked 41 relationships'],
+      ['auditing claims…', '3 contradictions detected', 'flagged 2 missing citations'],
+      ['investigating conflicts…', 'resolved 2 of 3 conflicts', 're-queued 1 research task']
+    ];
+    const names = ['Researcher', 'Curator', 'Sentinel', 'Resolver'];
+    let ai = 0, minute = 36;
+    setInterval(() => {
+      ai = (ai + 1) % 4;
+      opsAgents.forEach((a, i) => a.classList.toggle('is-active', i === ai));
+      const msg = feed[ai][Math.floor(Math.random() * feed[ai].length)];
+      opsAgents[ai].querySelector('.ops-status').textContent = msg;
+      minute = (minute + 1) % 60;
+      const line = document.createElement('div');
+      line.textContent = `14:${String(minute).padStart(2, '0')} ${names[ai]} — ${msg}`;
+      opsLog.prepend(line);
+      gsap.from(line, { yPercent: 70, autoAlpha: 0, duration: 0.5 });
+      while (opsLog.children.length > 4) opsLog.lastChild.remove();
+    }, 1700);
+  }
 
   /* ——— contact letters ——— */
   $$('.contact-huge .ch').forEach(ch => {

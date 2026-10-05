@@ -1,6 +1,6 @@
 # Vivek Reddy — portfolio
 
-A motion-first, single-page portfolio: knowledge engineer at **Varavox** (legal AI), founder of **IgniteXT** — live AI classes for secondary-school students (1x → 10x) and the IgniteXT student community.
+A motion-first, single-page portfolio: builder of the **Knowledge Generation Engine** (autonomous multi-agent knowledge system, at [Varavox](https://varavox.in)) and **IgniteXT** ([ignitext.tech](https://ignitext.tech)) — live AI classes for secondary-school students (1x → 10x) and the IgniteXT student community.
 
 Butter-smooth scrolling, velocity-reactive type, marquees, a pinned horizontal work section, 3D tilt cards, draggable stationery, and **hyperframes** — small inline video loops generated frame-by-frame from the site's own visuals.
 
