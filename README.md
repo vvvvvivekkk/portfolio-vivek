@@ -4,6 +4,8 @@
 
 **Live:** https://vvvvvivekkk.github.io/portfolio-vivek/
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vvvvvivekkk/portfolio-vivek)
+
 A motion-first, single-page portfolio: builder of the **Knowledge Generation Engine** (autonomous multi-agent knowledge system, at [Varavox](https://varavox.in)) and **IgniteXT** ([ignitext.tech](https://ignitext.tech)) — live AI classes for secondary-school students (1x → 10x) and the IgniteXT student community.
 
 Butter-smooth scrolling, velocity-reactive type, marquees, a pinned horizontal work section, 3D tilt cards, draggable stationery, and **hyperframes** — small inline video loops generated frame-by-frame from the site's own visuals.
